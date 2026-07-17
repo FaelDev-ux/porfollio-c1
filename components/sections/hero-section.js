@@ -5,7 +5,6 @@ import { Container } from "@/components/ui/container";
 export function HeroSection() {
   return (
     <section
-      id="inicio"
       className="isolate flex min-h-svh items-center overflow-hidden bg-black pt-20"
       style={{ position: "sticky", top: 0, zIndex: 0 }}
     >

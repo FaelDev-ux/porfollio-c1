@@ -1,14 +1,19 @@
 import { NavigationBar } from "@/components/layout/navigation-bar";
 import { HeroSection } from "@/components/sections/hero-section";
-import { PortfolioBackdropSection } from "@/components/sections/portfolio-backdrop-section";
+import { PortfolioSectionsTransition } from "@/components/sections/portfolio-sections-transition";
 
 export default function Home() {
   return (
     <>
       <NavigationBar />
-      <main id="conteudo-principal" tabIndex={-1}>
+      <main id="conteudo-principal" className="relative" tabIndex={-1}>
+        <span
+          id="inicio"
+          className="pointer-events-none absolute inset-x-0 top-0 h-px"
+          aria-hidden="true"
+        />
         <HeroSection />
-        <PortfolioBackdropSection />
+        <PortfolioSectionsTransition />
       </main>
     </>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "@/components/ui/container";
 
 const navigationLinks = [
@@ -13,6 +13,45 @@ const navigationLinks = [
 
 export function NavigationBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState("#inicio");
+
+  useEffect(() => {
+    let animationFrameId;
+
+    function updateActiveSection() {
+      const activationPoint = window.innerHeight * 0.5;
+      let nextActiveHref = navigationLinks[0].href;
+
+      navigationLinks.forEach((link) => {
+        const section = document.querySelector(link.href);
+
+        if (section && section.getBoundingClientRect().top <= activationPoint) {
+          nextActiveHref = link.href;
+        }
+      });
+
+      setActiveHref((currentHref) =>
+        currentHref === nextActiveHref ? currentHref : nextActiveHref,
+      );
+    }
+
+    function scheduleActiveSectionUpdate() {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = requestAnimationFrame(updateActiveSection);
+    }
+
+    updateActiveSection();
+    window.addEventListener("scroll", scheduleActiveSectionUpdate, {
+      passive: true,
+    });
+    window.addEventListener("resize", scheduleActiveSectionUpdate);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener("scroll", scheduleActiveSectionUpdate);
+      window.removeEventListener("resize", scheduleActiveSectionUpdate);
+    };
+  }, []);
 
   function closeMenu() {
     setIsOpen(false);
@@ -44,23 +83,31 @@ export function NavigationBar() {
 
         <nav className="hidden md:block" aria-label="Navegação principal">
           <ul className="flex items-center gap-8">
-            {navigationLinks.map((link, index) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className={`relative flex min-h-11 items-center text-xs font-medium tracking-[0.14em] uppercase transition-colors duration-200 focus-visible:outline-2 ${
-                    index === 0
-                      ? "text-white"
-                      : "text-white/60 hover:text-white"
-                  }`}
-                >
-                  {link.label}
-                  {index === 0 ? (
-                    <span className="absolute inset-x-0 bottom-1 h-px bg-gradient-to-r from-brand-deep via-brand to-brand-light" />
-                  ) : null}
-                </a>
-              </li>
-            ))}
+            {navigationLinks.map((link) => {
+              const isActive = activeHref === link.href;
+
+              return (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    aria-current={isActive ? "location" : undefined}
+                    className={`relative flex min-h-11 items-center text-xs font-medium tracking-[0.14em] uppercase transition-colors duration-200 focus-visible:outline-2 ${
+                      isActive ? "text-white" : "text-white/60 hover:text-white"
+                    }`}
+                  >
+                    {link.label}
+                    <span
+                      className={`absolute inset-x-0 bottom-1 h-px origin-center bg-gradient-to-r from-brand-deep via-brand to-brand-light transition-[transform,opacity] duration-300 ${
+                        isActive
+                          ? "scale-x-100 opacity-100"
+                          : "scale-x-0 opacity-0"
+                      }`}
+                      aria-hidden="true"
+                    />
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
@@ -90,17 +137,26 @@ export function NavigationBar() {
           aria-label="Navegação móvel"
         >
           <ul className="space-y-1">
-            {navigationLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={closeMenu}
-                  className="flex min-h-12 items-center border-b border-white/8 text-sm tracking-[0.14em] text-white/70 uppercase transition-colors hover:text-brand-light"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {navigationLinks.map((link) => {
+              const isActive = activeHref === link.href;
+
+              return (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    onClick={closeMenu}
+                    aria-current={isActive ? "location" : undefined}
+                    className={`flex min-h-12 items-center border-b text-sm tracking-[0.14em] uppercase transition-colors ${
+                      isActive
+                        ? "border-brand/40 text-brand-light"
+                        : "border-white/8 text-white/70 hover:text-brand-light"
+                    }`}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
           <a
             href="#contato"
