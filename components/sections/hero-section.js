@@ -1,20 +1,18 @@
 import { ArrowDown, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
+import { SectionWatermark } from "@/components/ui/section-watermark";
 
 export function HeroSection() {
   return (
-    <section
-      className="isolate flex min-h-svh items-center overflow-hidden bg-black pt-20"
-      style={{ position: "sticky", top: 0, zIndex: 0 }}
-    >
+    <section className="relative isolate flex h-full min-h-svh items-center overflow-hidden bg-black pt-20">
       <Image
-        src="/images/profile/hero-background.webp"
+        src="/images/profile/background.webp"
         alt=""
         fill
         priority
         sizes="100vw"
-        className="-z-30 scale-[1.04] object-cover object-[center_26%] blur-[3px] grayscale"
+        className="-z-30 scale-[1.04] object-cover object-[center_26%] blur-[10px] grayscale"
         aria-hidden="true"
       />
 
@@ -23,7 +21,9 @@ export function HeroSection() {
       <div className="absolute inset-x-0 bottom-0 -z-10 h-56 bg-gradient-to-t from-background via-background/55 to-transparent" />
       <div className="absolute inset-x-0 top-20 -z-10 h-px bg-gradient-to-r from-transparent via-brand/45 to-transparent" />
 
-      <Container className="flex min-h-[calc(100svh-5rem)] items-center justify-center py-20 text-center">
+      <SectionWatermark>REBECA</SectionWatermark>
+
+      <Container className="relative z-10 flex min-h-[calc(100svh-5rem)] items-center justify-center py-20 text-center">
         <div className="hero-reveal mx-auto max-w-4xl">
           <p className="mb-6 font-mono text-xs font-medium tracking-[0.3em] text-brand-light uppercase sm:text-sm">
             Produção e direção audiovisual
@@ -64,7 +64,7 @@ export function HeroSection() {
 
       <a
         href="#portfolio"
-        className="absolute bottom-7 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-[0.65rem] tracking-[0.22em] text-white/55 uppercase transition-colors hover:text-brand-light"
+        className="absolute bottom-7 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 text-[0.65rem] tracking-[0.22em] text-white/55 uppercase transition-colors hover:text-brand-light"
         aria-label="Ir para o portfólio"
       >
         Explorar
