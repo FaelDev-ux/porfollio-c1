@@ -1,5 +1,4 @@
 import { NavigationBar } from "@/components/layout/navigation-bar";
-import { HeroSection } from "@/components/sections/hero-section";
 import { PortfolioSectionsTransition } from "@/components/sections/portfolio-sections-transition";
 
 export default function Home() {
@@ -12,7 +11,6 @@ export default function Home() {
           className="pointer-events-none absolute inset-x-0 top-0 h-px"
           aria-hidden="true"
         />
-        <HeroSection />
         <PortfolioSectionsTransition />
       </main>
     </>
