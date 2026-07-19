@@ -116,6 +116,57 @@ a {
   will-change: transform;
 }
 
+@media (max-height: 520px) and (orientation: landscape) {
+  .about-content {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .about-main {
+    align-items: flex-start;
+  }
+
+  .about-eyebrow,
+  .about-description {
+    display: none;
+  }
+
+  .about-title {
+    max-width: 30rem;
+    margin-top: 0;
+    font-size: 1.75rem;
+    line-height: 1;
+  }
+
+  .about-stages {
+    max-width: 30rem;
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .about-cta {
+    min-height: 2.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .about-marquee {
+    margin-top: 0.5rem;
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem;
+  }
+
+  .about-marquee p {
+    margin-bottom: 0.25rem;
+    font-size: 0.45rem;
+  }
+
+  .about-marquee-logo {
+    width: 7rem;
+    height: 1.5rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

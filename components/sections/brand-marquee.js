@@ -10,7 +10,7 @@ function BrandList({ duplicate = false }) {
       {brands.map((brand) => (
         <div
           key={brand.name}
-          className="relative h-10 w-32 shrink-0 sm:h-12 sm:w-40 lg:w-44"
+          className="about-marquee-logo relative h-8 w-28 shrink-0 sm:h-12 sm:w-40 lg:w-44"
         >
           <Image
             src={brand.logo}
@@ -30,8 +30,8 @@ function BrandList({ duplicate = false }) {
 
 export function BrandMarquee() {
   return (
-    <div className="mt-4 w-full shrink-0 border-y border-white/10 py-3.5 sm:mt-5 sm:py-4">
-      <p className="mb-3 text-center font-mono text-[0.58rem] font-medium tracking-[0.2em] text-white/55 uppercase sm:mb-4 sm:text-[0.65rem]">
+    <div className="about-marquee mt-3 w-full shrink-0 border-y border-white/10 py-2.5 sm:mt-5 sm:py-4">
+      <p className="mb-2 text-center font-mono text-[0.5rem] font-medium tracking-[0.16em] text-white/55 uppercase sm:mb-4 sm:text-[0.65rem] sm:tracking-[0.2em]">
         Marcas presentes em projetos que produzi
       </p>
 

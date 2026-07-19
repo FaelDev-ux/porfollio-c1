@@ -44,16 +44,16 @@ export function AboutBackdropSection() {
 
       <SectionWatermark>PRODUTORA</SectionWatermark>
 
-      <Container className="relative z-10 flex h-full flex-col py-6 sm:py-8">
-        <div className="flex min-h-0 flex-1 items-center">
+      <Container className="about-content relative z-10 flex h-full flex-col pt-3 pb-3 sm:py-8">
+        <div className="about-main flex min-h-0 flex-1 items-start sm:items-center">
           <div className="max-w-xl lg:max-w-2xl">
-            <p className="font-mono text-[0.65rem] font-medium tracking-[0.3em] text-brand-light uppercase sm:text-xs">
+            <p className="about-eyebrow font-mono text-[0.65rem] font-medium tracking-[0.3em] text-brand-light uppercase sm:text-xs">
               Sobre mim
             </p>
 
             <h2
               id="titulo-sobre"
-              className="mt-4 text-4xl leading-[1.04] font-semibold tracking-[-0.035em] text-balance text-white sm:text-5xl lg:text-6xl"
+              className="about-title mt-2 text-[clamp(1.8rem,8.5vw,2.5rem)] leading-[1.02] font-semibold tracking-[-0.035em] text-balance text-white sm:mt-4 sm:text-5xl sm:leading-[1.04] lg:text-6xl"
             >
               Um olhar atento para histórias que precisam
               <span className="block bg-linear-to-r from-brand-light via-brand to-[#ff71b0] bg-clip-text text-transparent">
@@ -61,14 +61,14 @@ export function AboutBackdropSection() {
               </span>
             </h2>
 
-            <div className="mt-5 max-w-xl space-y-3 text-sm leading-6 text-white/72 sm:text-base sm:leading-7">
+            <div className="about-description mt-3 max-w-xl space-y-3 text-[0.78rem] leading-5 text-white/72 sm:mt-5 sm:text-base sm:leading-7">
               <p>
                 Sou produtora audiovisual e transformo ideias em vídeos com
                 intenção, ritmo e identidade. Meu trabalho começa na escuta:
                 entender a história, o objetivo e a mensagem que cada projeto
                 precisa transmitir é o que orienta todas as escolhas criativas.
               </p>
-              <p>
+              <p className="hidden sm:block">
                 Da produção à edição, penso cada detalhe para que imagem, som e
                 narrativa funcionem juntos. Mais do que criar vídeos visualmente
                 bonitos, busco construir conteúdos que comuniquem com clareza,
@@ -77,7 +77,7 @@ export function AboutBackdropSection() {
               </p>
             </div>
 
-            <div className="mt-7 grid max-w-lg grid-cols-3 border-y border-white/12 py-4 sm:mt-9 sm:py-5">
+            <div className="about-stages mt-4 grid max-w-lg grid-cols-3 border-y border-white/12 py-3 sm:mt-9 sm:py-5">
               {["Conceito", "Produção", "Edição"].map((stage, index) => (
                 <div
                   key={stage}
@@ -97,7 +97,7 @@ export function AboutBackdropSection() {
 
             <a
               href="#contato"
-              className="group mt-7 inline-flex min-h-12 items-center justify-center gap-3 border border-white/25 bg-black/25 px-6 text-sm font-semibold text-white backdrop-blur-sm transition-[border-color,background-color] duration-200 hover:border-brand hover:bg-brand/10 focus-visible:outline-2 sm:mt-9"
+              className="about-cta group relative z-10 mt-4 inline-flex min-h-11 w-full items-center justify-center gap-3 border border-white/25 bg-black/25 px-6 text-sm font-semibold text-white backdrop-blur-sm transition-[border-color,background-color] duration-200 hover:border-brand hover:bg-brand/10 focus-visible:outline-2 sm:mt-9 sm:min-h-12 sm:w-auto"
             >
               Vamos criar juntos
               <ArrowUpRight
